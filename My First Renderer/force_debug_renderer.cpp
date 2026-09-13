@@ -10,11 +10,23 @@ ForceDebugRenderer::ForceDebugRenderer() : VAO(0), VBO(0){
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
 	// Define pointers to attributes
-	glBufferData(GL_ARRAY_BUFFER, 2 * sizeof(glm::vec3), nullptr, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 2 * sizeof(glm::vec3), nullptr, GL_DYNAMIC_DRAW);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), (void*)0);
 	glEnableVertexAttribArray(0);
 
 	// Unbind buffer and array
 	glBindVertexArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
+void ForceDebugRenderer::draw(std::vector<glm::vec3> debugVector) {
+	// Load force's data into buffer
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferSubData(GL_ARRAY_BUFFER, 0, debugVector.size() * sizeof(glm::vec3), debugVector.data());
+
+	// Select force's VAO to use for interpertation
+	glBindVertexArray(VAO);
+
+	glDrawArrays(GL_LINES, 0, 2);
+	glBindVertexArray(0);
 }

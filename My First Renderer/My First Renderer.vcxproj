@@ -134,6 +134,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="camera.cpp" />
+    <ClCompile Include="cursor.cpp" />
     <ClCompile Include="force_debug_renderer.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="gravity.cpp" />
@@ -156,6 +157,7 @@
   <ItemGroup>
     <ClInclude Include="camera.h" />
     <ClInclude Include="component.h" />
+    <ClInclude Include="cursor.h" />
     <ClInclude Include="force.h" />
     <ClInclude Include="force_debug_renderer.h" />
     <ClInclude Include="gravity.h" />
@@ -175,10 +177,13 @@
     <ClInclude Include="spring.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="transform.h" />
+    <ClInclude Include="ui_component.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shader.frag" />
     <None Include="shader.vert" />
+    <None Include="shader_ui.frag" />
+    <None Include="shader_ui.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="doghuhwhat.jpeg" />

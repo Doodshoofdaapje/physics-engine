@@ -1,7 +1,9 @@
 #include "render_engine.h"
 #include "mesh_renderer.h"
 
-RenderEngine::RenderEngine() : shader("shader.vert", "shader.frag")  {
+RenderEngine::RenderEngine() : 
+        shader("shader.vert", "shader.frag"), 
+        uiShader("shader_ui.vert", "shader_ui.frag") {
 }
 
 void RenderEngine::setMeshObjects(const std::vector<Object*> meshObjects) {
@@ -56,19 +58,13 @@ void RenderEngine::drawMeshObjects() {
 
 void RenderEngine::drawForces() {
     for (int i = 0; i < forces.size(); i++) {
-        std::vector<glm::vec3> debugData = forces[i]->getDebugVector();
-        ForceDebugRenderer& debugRenderer = forcesDebugRenderers[i];
-
-        // Load force's data into buffer
-        glBindBuffer(GL_ARRAY_BUFFER, debugRenderer.VBO);
-        glBufferSubData(GL_ARRAY_BUFFER, 0, debugData.size() * sizeof(glm::vec3), debugData.data());
-
-        // Select force's VAO to use for interpertation
-        glBindVertexArray(debugRenderer.VAO);
-
-        glDrawArrays(GL_LINES, 0, 2);
-        glBindVertexArray(0);
+        std::vector<glm::vec3> debugVector = forces[i]->getDebugVector();
+        forcesDebugRenderers[i].draw(debugVector);
     }
+}
+
+void RenderEngine::drawCursor() {
+    cursor.draw();
 }
 
 void RenderEngine::render(Camera& camera) {
@@ -77,16 +73,20 @@ void RenderEngine::render(Camera& camera) {
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 
     // Setup shader values for objects
+    shader.use();
     shader.setMatrix4fv("view", camera.getViewMatrix());
     shader.setMatrix4fv("projection", camera.getProjectionMatrix());
     shader.setVec3("viewPos", (*camera.getComponent<Transform>()).position);
     updateLights();
-    shader.use();
 
+    // Draw meshes
     drawMeshObjects();
 
     // Draw forces
     shader.setMatrix4fv("model", glm::mat4(1.0f));
-    
     drawForces();
+
+    // Draw UI
+    uiShader.use();
+    drawCursor();
 }

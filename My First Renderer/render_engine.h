@@ -15,11 +15,13 @@
 #include "light_source.h"
 #include "camera.h"
 #include "force_debug_renderer.h"
+#include "cursor.h"
 
 class RenderEngine {
 	private:
 		// Main generic shader program
 		Shader shader;
+		Shader uiShader;
 
 		// Optional pointers to objecs to render
 		std::vector<Object*> meshObjects;
@@ -29,10 +31,14 @@ class RenderEngine {
 		// Helper objects to save rendering states
 		std::vector<ForceDebugRenderer> forcesDebugRenderers; // Index of debugRenderer must match index of force
 
+		// UI elements
+		Cursor cursor;
+
 		// Draw functions
 		void updateLights();
 		void drawMeshObjects();
 		void drawForces();
+		void drawCursor();
 
 	public:
 		// Constructor and disable copying

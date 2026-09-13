@@ -19,9 +19,11 @@ const char* WINDOW_TITLE = "MyFirstRenderer";
 GLFWwindow* createWindow();
 void framebufferSizeCallback(GLFWwindow* window, int width, int height);
 void mouseCallback(GLFWwindow* window, double xpos, double ypos);
+void pKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 void simulationLoop(GLFWwindow* window);
 void processInput(GLFWwindow* window);
+void printInstructions();
 
 // TODO: move to scene object
 template<typename T>
@@ -63,6 +65,7 @@ int main()
     // Callbacks
     glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
     glfwSetCursorPosCallback(window, mouseCallback);
+    glfwSetKeyCallback(window, pKeyCallback);
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); // Hide and lock cursor
     
     // Setup Camera
@@ -103,6 +106,8 @@ int main()
     renderEngine->setMeshObjects(objectsWith<MeshRenderer>());
     renderEngine->setLights(objectsWith<LightSource>());
     renderEngine->setForces(physicsEngine.getForces());
+
+    printInstructions();
 
     // Start rendering
     simulationLoop(window);
@@ -171,9 +176,13 @@ void processInput(GLFWwindow* window)
         camera.move(0.0f, 0.0f, 1.0f, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
         camera.move(0.0f, 0.0f, -1.0f, deltaTime);
+}
 
-    if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS)
+void pKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+    if (key == GLFW_KEY_P && action == GLFW_PRESS) {
         physicsEngine.toggleSimulation();
+        std::cout << "Physics running: " << physicsEngine.enabled << std::endl;
+    }
 }
 
 template<typename T>
@@ -210,4 +219,18 @@ void simulationLoop(GLFWwindow* window) {
         glfwPollEvents();
     }
     glfwTerminate();
+}
+
+void printInstructions() {
+    std::cout << "\n";
+    std::cout << "Welcome to this physics engine." << std::endl;
+        
+    std::cout << "See the following keybinds for movement instructions:" << std::endl;
+    std::cout << "- Use the WASD keys in order to move the camera." << std::endl;
+    std::cout << "- Press space to move the camera up, and press shift the move the camera down" << std::endl;
+    std::cout << "- Aim the camera by moving the mouse around" << std::endl;
+    std::cout << "\n";
+
+    std::cout << "Start/Pause the physics simulation by pressing P" << std::endl;
+    std::cout << "\n";
 }

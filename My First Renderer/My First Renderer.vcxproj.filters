@@ -64,6 +64,12 @@
     <Filter Include="header files\rendering">
       <UniqueIdentifier>{cb0cc29e-830b-45dd-a0dc-31fa536ef6d5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="header files\rendering\ui">
+      <UniqueIdentifier>{bfabe6cf-07f4-4931-b358-3636b03ace4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source Files\rendering\ui">
+      <UniqueIdentifier>{59f7023c-56c9-4c46-bffb-a9c2424fec7c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="window.cpp">
@@ -122,6 +128,9 @@
     </ClCompile>
     <ClCompile Include="force_debug_renderer.cpp">
       <Filter>source Files\rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="cursor.cpp">
+      <Filter>source Files\rendering\ui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -188,12 +197,24 @@
     <ClInclude Include="force_debug_renderer.h">
       <Filter>header files\rendering</Filter>
     </ClInclude>
+    <ClInclude Include="ui_component.h">
+      <Filter>header files\rendering\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="cursor.h">
+      <Filter>header files\rendering\ui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="shader.frag">
       <Filter>source Files\rendering\shaders</Filter>
     </None>
     <None Include="shader.vert">
+      <Filter>source Files\rendering\shaders</Filter>
+    </None>
+    <None Include="shader_ui.frag">
+      <Filter>source Files\rendering\shaders</Filter>
+    </None>
+    <None Include="shader_ui.vert">
       <Filter>source Files\rendering\shaders</Filter>
     </None>
   </ItemGroup>
