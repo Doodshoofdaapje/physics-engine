@@ -4,7 +4,7 @@
 #pragma once
 
 #include <glad/glad.h> // include glad to get all the required OpenGL headers
-#include <glm.hpp>
+#include <glm/glm.hpp>
 #include <vector>
 
 class UiComponent {

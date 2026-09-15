@@ -73,7 +73,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>C:\Users\boris\Documents\Code Libraries\OpenGL\includes;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\boris\Documents\Code Libaries\OpenGL\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Users\boris\Documents\Code Libraries\OpenGL\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
