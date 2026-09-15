@@ -217,6 +217,12 @@
     <None Include="shader_ui.vert">
       <Filter>source Files\rendering\shaders</Filter>
     </None>
+    <None Include="shader_forces.frag">
+      <Filter>source Files\rendering\shaders</Filter>
+    </None>
+    <None Include="shader_forces.vert">
+      <Filter>source Files\rendering\shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="doghuhwhat.jpeg">

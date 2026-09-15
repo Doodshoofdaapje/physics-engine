@@ -182,6 +182,8 @@
   <ItemGroup>
     <None Include="shader.frag" />
     <None Include="shader.vert" />
+    <None Include="shader_forces.frag" />
+    <None Include="shader_forces.vert" />
     <None Include="shader_ui.frag" />
     <None Include="shader_ui.vert" />
   </ItemGroup>

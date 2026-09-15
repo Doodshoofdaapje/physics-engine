@@ -3,7 +3,8 @@
 
 RenderEngine::RenderEngine() : 
         shader("shader.vert", "shader.frag"), 
-        uiShader("shader_ui.vert", "shader_ui.frag") {
+        uiShader("shader_ui.vert", "shader_ui.frag"),
+        debugForcesShader("shader_forces.vert", "shader_forces.frag") {
 }
 
 void RenderEngine::setMeshObjects(const std::vector<Object*> meshObjects) {
@@ -83,7 +84,9 @@ void RenderEngine::render(Camera& camera) {
     drawMeshObjects();
 
     // Draw forces
-    shader.setMatrix4fv("model", glm::mat4(1.0f));
+    debugForcesShader.use();
+    debugForcesShader.setMatrix4fv("view", camera.getViewMatrix());
+    debugForcesShader.setMatrix4fv("projection", camera.getProjectionMatrix());
     drawForces();
 
     // Draw UI

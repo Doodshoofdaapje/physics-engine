@@ -19,9 +19,9 @@
 
 class RenderEngine {
 	private:
-		// Main generic shader program
-		Shader shader;
-		Shader uiShader;
+		Shader shader; // Main Shader
+		Shader uiShader; // Shader for UI
+		Shader debugForcesShader; // Shader for debugging forces
 
 		// Optional pointers to objecs to render
 		std::vector<Object*> meshObjects;
