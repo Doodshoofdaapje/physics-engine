@@ -11,6 +11,7 @@
 
 #include "object.h"
 #include "mesh_renderer.h"
+#include "rigid_body.h" 
 
 struct BoundingBox {
     glm::vec3 min;
@@ -26,6 +27,9 @@ public:
     
     const BoundingBox& getLocalBounds();
     const BoundingBox getWorldBounds() const;
+
+    bool collidesWith(ColliderAABB* other) const;
+    void resolveCollision(ColliderAABB* other);
 
 private:
     BoundingBox bounds;

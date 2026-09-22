@@ -48,9 +48,7 @@ private:
     std::unique_ptr<Solver> solver;
 
     // Collision checks
-    void checkCollisions();
-    bool collides(Object* obj1, Object* obj2);
-    void handleCollision(Object* obj1, Object* obj2);
+    void resolveCollisions();
 };
 
 #endif
