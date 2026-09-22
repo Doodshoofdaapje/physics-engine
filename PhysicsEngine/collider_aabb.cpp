@@ -12,8 +12,9 @@ const BoundingBox& ColliderAABB::getLocalBounds() {
 	return this->bounds;
 }
 
-const BoundingBox ColliderAABB::getWorldBounds(const Transform* transform) const
+const BoundingBox ColliderAABB::getWorldBounds() const
 {
+    Transform* transform = getObject()->getComponent<Transform>();
     glm::vec3 localMin = bounds.min;
     glm::vec3 localMax = bounds.max;
 

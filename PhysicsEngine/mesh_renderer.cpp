@@ -1,4 +1,5 @@
 #include "mesh_renderer.h"
+#include "object.h"
 
 MeshRenderer::MeshRenderer(const char* objectPath) {
     // Initialize mesh data
@@ -75,7 +76,8 @@ void MeshRenderer::setup() {
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void MeshRenderer::draw(Shader* shader, Transform* transform) {
+void MeshRenderer::draw(Shader* shader) {
+    Transform* transform = getObject()->getComponent<Transform>();
     glm::mat4 model = glm::mat4(1.0f);
 
     // Transform Geometry view to World view

@@ -84,13 +84,11 @@ void PhysicsEngine::checkCollisions() {
 }
 
 bool PhysicsEngine::collides(Object* obj1, Object* obj2) {
-	Transform* tr1 = obj1->getComponent<Transform>();
-	Transform* tr2 = obj2->getComponent<Transform>();
 	ColliderAABB* col1 = obj1->getComponent<ColliderAABB>();
 	ColliderAABB* col2 = obj2->getComponent<ColliderAABB>();
 	
-	BoundingBox bb1 = col1->getWorldBounds(tr1);
-	BoundingBox bb2 = col2->getWorldBounds(tr2);
+	BoundingBox bb1 = col1->getWorldBounds();
+	BoundingBox bb2 = col2->getWorldBounds();
 
 	return
 		bb1.min.x <= bb2.max.x && bb1.max.x >= bb2.min.x &&
@@ -106,8 +104,8 @@ void PhysicsEngine::handleCollision(Object* obj1, Object* obj2) {
 	RigidBody* rb1 = obj1->getComponent<RigidBody>();
 	RigidBody* rb2 = obj2->getComponent<RigidBody>();
 
-	BoundingBox bb1 = col1->getWorldBounds(tr1);
-	BoundingBox bb2 = col2->getWorldBounds(tr2);
+	BoundingBox bb1 = col1->getWorldBounds();
+	BoundingBox bb2 = col2->getWorldBounds();
 
 	// Determine collision side and penetration depth
 	float overlapX = std::min(bb1.max.x, bb2.max.x) - std::max(bb1.min.x, bb2.min.x);

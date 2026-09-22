@@ -77,7 +77,7 @@ int main()
     origin->addComponent<MeshRenderer>("triangle1.obj")->setTexture(true, "doghuhwhat.jpeg");
 
     std::unique_ptr<Object> ground = std::make_unique<Object>(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f));
-    ground->addComponent<MeshRenderer>("ground.obj");
+    ground->addComponent<MeshRenderer>("ground.obj")->setMaterial(1, glm::vec4(0.2, 0.0f, 0.0f, 1.0f), glm::vec4(0.05f, 0.8f, 0.15f, 1.0f), glm::vec4(1.0f));
 
     std::unique_ptr<Object> dog = std::make_unique<Object>(glm::vec3(-10.0f, 0.0f, 0.0f), glm::vec3(-90.0f, 0.0f, 0.0f), glm::vec3(0.3f));
     MeshRenderer* dogMeshRenderer = dog->addComponent<MeshRenderer>("dog.obj")->setMaterial(128, glm::vec4(0.2, 0.0f, 0.0f, 1.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f), glm::vec4(1.0f));

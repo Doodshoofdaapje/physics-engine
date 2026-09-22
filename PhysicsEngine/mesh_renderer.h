@@ -27,7 +27,7 @@ class MeshRenderer : public Component{
         MeshRenderer(const char* objectPath);
 
         void setup();
-        void draw(Shader* shader, Transform* transform);
+        void draw(Shader* shader);
         
         MeshRenderer* setTexture(bool isTextured, const char* texturePath);
         MeshRenderer* setMaterial(float shininess, glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specular);

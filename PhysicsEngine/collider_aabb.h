@@ -25,7 +25,7 @@ public:
     void setBoundingBox(glm::vec3 minBounds, glm::vec3 maxBounds);
     
     const BoundingBox& getLocalBounds();
-    const BoundingBox getWorldBounds(const Transform* transform) const;
+    const BoundingBox getWorldBounds() const;
 
 private:
     BoundingBox bounds;

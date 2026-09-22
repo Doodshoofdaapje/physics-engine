@@ -1,6 +1,8 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
+#pragma once
+
 #include <glad/glad.h> // include glad to get all the required OpenGL headers
 
 #include <string>
@@ -45,6 +47,8 @@ public:
         }
 
         auto component = std::make_unique<T>(std::forward<Args>(args)...);
+        component->object = this; // Set reference to object
+
         T* rawPointer = component.get();
         components[typeID] = std::move(component);
 

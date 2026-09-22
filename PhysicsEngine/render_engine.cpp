@@ -62,7 +62,7 @@ void RenderEngine::updateLights() {
 void RenderEngine::drawMeshObjects() {
     for (auto object : meshObjects) {
         MeshRenderer* renderer = object->getComponent<MeshRenderer>();
-        renderer->draw(&shader, (object->getComponent<Transform>()));
+        renderer->draw(&shader);
     }
 }
 
@@ -81,7 +81,7 @@ void RenderEngine::drawBoundingBoxes() {
 
         Transform* transform = object->getComponent<Transform>();
         ColliderAABB* collider = object->getComponent<ColliderAABB>();
-        BoundingBox boundingBox = collider->getWorldBounds(transform);
+        BoundingBox boundingBox = collider->getWorldBounds();
         
         colliderDebugRenderers[renderId].draw(boundingBox);
 
