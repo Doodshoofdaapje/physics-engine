@@ -1,3 +1,0 @@
-﻿  render_engine.cpp
-C:\Users\boris\Documents\temp projects\physics-engine\PhysicsEngine\render_engine.cpp(41,19): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  My First Renderer.vcxproj -> C:\Users\boris\Documents\temp projects\physics-engine\PhysicsEngine\x64\Debug\PhysicsEngine.exe
