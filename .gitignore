@@ -2,6 +2,6 @@
 *.opendb
 *.ipch
 .vs/
-MyFirstRenderer/.vs
-/My First Renderer/x64/
-/My First Renderer/MyFirstRenderer/
+PhysicsEngine/.vs
+/PhysicsEngine/x64/
+/PhysicsEngine/PhysicsEngine/
