@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "PhysicsEngine\\x64\\Debug\\window.obj",
+            "outputs": [
+                "PhysicsEngine\\x64\\Debug\\window.cpp.obj.dt.module.json",
+                "PhysicsEngine\\x64\\Debug\\window.cpp.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}
